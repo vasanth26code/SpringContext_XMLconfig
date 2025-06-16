@@ -1,0 +1,96 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+<!--    <bean id="player1" class="com.vasanth.Player" scope="prototype">    normal scope is singleton
+                                                                          where refrence of obj is created-->
+    <!-- normally spring will create a obj for everything that is mentioned in the bean tag but when it's scope
+         is prototype the obj will be created at getbean in mainapp.java so that it doesnot use reference of
+         obj like singleton and uses diff obj at diff times when calling get bean like prototype scope -->
+<!--    </bean>-->
+
+    <!--    <bean id="player1" class="com.vasanth.Player" >-->
+<!--        <bean id="player1" class="com.vasanth.Player" autowire="byName">-->
+    <bean id="player1" class="com.vasanth.Player" autowire="byType">
+
+
+<!--        <property name="age" value="25"></property>-->
+<!--        <property name="lap" ref="laptop"></property>-->
+        <!-- without using property tag now using constructor args for constructor injection  -->
+<!--        <constructor-arg value="21" />-->
+<!--        <constructor-arg ref="laptop" />-->
+
+<!--        now using name type without changing order-->
+<!--        <constructor-arg name="age" value="25" />-->
+<!--        <constructor-arg name="lap" ref="laptop" />-->
+        <!--now changing order-->
+<!--        <constructor-arg type="com.vasanth.Laptop" ref="laptop" />-->
+<!--        <constructor-arg type="int" value="21" />-->
+
+<!--        now without type using another suggestion-->
+<!--        <constructor-arg index="1" ref="laptop" />-->
+<!--        <constructor-arg index="0" value="24"  />-->
+
+<!--        code for autowired-->
+<!--        <property name="com" ref="laptop" />-->
+<!--        <property name="age" value="24" />-->
+
+<!--            code when id name and bean name is same  eg which is created below   <bean id="com" class="com.vasanth.Laptop"></bean>-->
+<!--        <property name="com" ref="com" />-->
+<!--        <property name="age" value="24" />-->
+
+<!--        code for automatically doing autowired in bean creation above add autowire byName-->
+<!--        <property name="age" value="24" />-->
+
+<!--        code for doing autowired but byname is mentioned and ref is mentioned as com1 so itll use desktop even in-->
+<!--        name when you gave com for byname itll use com1 because u used com1 in ref-->
+<!--                <property name="age" value="24" />-->
+<!--                <property name="com" ref="com1" />-->
+
+<!--        code for autowired automatically bytype only create one bean as com only lap-->
+<!--                <property name="age" value="24" />-->
+
+<!--        code for autowired automatically bytype using two bean type as com lap and desk
+            using primary bean concept use primary true in laptop bean creation-->
+<!--        <property name="age" value="24" />-->
+<!--        <property name="com" ref="com1" />-->
+<!--        but here if u use property it'll only use the bean mentioned in it the bytype and primary wont work -->
+<!--        <property name="age" value="24" />-->
+<!--        <property name="com" ref="com1" />-->
+
+<!--        property for using a lazybean -->
+<!--        <property name="age" value="24" />-->
+<!--        <property name="com" ref="com1" />-->
+
+<!---       property for using inner bean-->
+        <property name="age" value="24" />
+        <property name="com">
+            <bean id="com1" class="com.vasanth.Laptop" primary="true">
+            </bean>
+        </property>
+
+        </bean>
+
+    <!--    <bean id="laptop" class="com.vasanth.Laptop">-->
+<!--    </bean>-->
+
+<!--    <bean id="com1" class="com.vasanth.Laptop" primary="true">-->
+<!--    </bean>-->
+
+<!--    <bean id="laptop2" class="com.vasanth.Laptop">-->
+<!--    </bean>-->
+
+<!--    <bean id="com2" class="com.vasanth.Desktop">-->
+<!--    </bean>-->
+
+<!--    create the bean/object only when we want to create and use it doesn't
+        create it automatically when mentioned in bean tag-->
+<!--    <bean id="com2" class="com.vasanth.Desktop" lazy-init="true">-->
+<!--    </bean>-->
+
+<!--    <bean class="com.vasanth.Desktop" lazy-init="true">-->
+<!--    </bean>-->
+
+</beans>
